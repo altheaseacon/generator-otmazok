@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор отмазок от пар</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            overflow: hidden;
+        }
+ 
+        /* Фоновое видео */
+        #background-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            filter: blur(8px);
+            z-index: -1;
+        }
+ 
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            animation: fadeIn 1s ease-in-out;
+            transition: all 0.3s;
+        }
+ 
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+ 
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+            animation: slideDown 0.8s ease-in-out;
+            transition: all 0.3s;
+        }
+ 
+        @keyframes slideDown {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+ 
+        .excuse-container {
+            font-size: 20px;
+            color: #555;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            min-height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+ 
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+ 
+        button:hover {
+            background-color: #0056b3;
+            transition: all 0.3s;
+        }
+ 
+        button:active {
+            transform: scale(0.98);
+            transition: all 0.3s;
+        }
+ 
+        footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #aaa;
+        }
+ 
+        /* Адаптивность */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            button {
+                padding: 8px 16px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+ 
+    <!-- Фоновое видео -->
+    <video autoplay muted loop id="background-video">
+        <source src="video (2).mp4" type="video/mp4">
+    </video>
+ 
+    <div class="container">
+        <h1>Генератор отмазок от пар</h1>
+        <div class="excuse-container">
+            <span class="excuse-text" id="excuse">Нажми на кнопку, чтобы получить отмазку!</span>
+        </div>
+        <button id="generate-btn">Получить отмазку</button>
+        <footer>
+            © 2024 Генератор отмазок. Все права защищены.
+        </footer>
+    </div>
+ 
+    <script>
+        document.getElementById('generate-btn').addEventListener('click', generateExcuse);
+ 
+        function generateExcuse() {
+            const excuses = [
+            {
+                text: "Собака съела мой домашний компьютер."
+            },
+            {
+                text: "Я был занят спасением котят с дерева."
+            },
+            {
+                text: "Интернет не работал весь день."
+            },
+            {
+                text: "Я потерял трек времени, играя в шахматы с роботом."
+            },
+            {
+                text: "Мой будильник не прозвенел из-за проблем с электричеством."
+            },
+            {
+                text: "Я думал, что сегодня выходной."
+            },
+            {
+                text: "Меня похитили инопланетяне, но я вернулся вовремя!"
+            },
+            {
+                text: "Компьютер завис, когда я был на финальной стадии проекта."
+            },
+            {
+                text: "Я забыл пароль от жизни и пришлось перезагружаться."
+            },
+            {
+                text: "У меня был запланирован марафон по просмотру сериалов — я не мог прервать его!"
+            },
+            {
+                text: "Мой холодильник устроил протест и заблокировал мне выход."
+            },
+            {
+                text: "Я открыл портал в параллельную вселенную и заблудился на обратном пути."
+            },
+            {
+                text: "Я случайно съел слишком много мороженого и впал в сладкую кому."
+            },
+            {
+                text: "Мне пришлось участвовать в экстренном совете супергероев."
+            },
+            {
+                text: "Я застрял в пятимерном кубе Рубика и выбирался всю ночь."
+            },
+            {
+                text: "Мой телефон решил устроить отпуск и отключился от мира."
+            },
+            {
+                text: "У меня был очень важный звонок с кошкой."
+            },
+            {
+                text: "Моя домашняя автоматизация сошла с ума и заперла меня в ванной."
+            },
+            {
+                text: "Внезапно обнаружил, что я в матрице, и выбирался оттуда весь день."
+            },
+            {
+                text: "Будильник решил, что я заслуживаю дополнительного сна."
+            },
+            {
+                text: "Я оказался замурован под горой грязной посуды."
+            },
+            {
+                text: "Мой робот-пылесос решил устроить забастовку и заблокировал все выходы."
+            },
+            {
+                text: "На моем телефоне закончились лайки, и он отказался работать."
+            },
+            {
+                text: "Мой GPS отправил меня в путешествие по соседским дворам."
+            },
+            {
+                text: "Я подумал, что мы живем по лунному календарю."
+            },
+            {
+                text: "Мои носки исчезли в черной дыре под кроватью, пришлось их искать."
+            },
+            {
+                text: "Мой питомец решил, что сегодня день для массовых объятий."
+            },
+            {
+                text: "Чайник взорвался, и я устранял последствия."
+            },
+            {
+                text: "На улице шла битва со снеговиками, и я не мог остаться в стороне."
+            },
+            {
+                text: "Я случайно подписался на день без интернета."
+            },
+            {
+                text: "Моя мебель решила устроить перестановку без моего участия."
+            },
+            {
+                text: "Я заснул во время чтения 'Войны и мира'."
+            }
+        ];
+ 
+            // Выбираем случайную отмазку
+            const randomIndex = Math.floor(Math.random() * excuses.length);
+            const excuse = excuses[randomIndex];
+ 
+            // Обновляем текст на странице
+            document.getElementById('excuse').textContent = excuse.text;
+        }
+    </script>
+ 
+</body>
+</html>
