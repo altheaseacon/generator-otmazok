@@ -1,0 +1,22 @@
+document.getElementById('generate-btn').addEventListener('click', generateExcuse);
+
+function generateExcuse() {
+    const excuses = [
+        "Собака съела мой домашний компьютер.",
+        "Я был занят спасением котят с дерева.",
+        "Интернет не работал весь день.",
+        "Я потерял трек времени, играя в шахматы с роботом.",
+        "Мой будильник не прозвенел из-за проблем с электричеством.",
+        "Я думал, что сегодня выходной.",
+        "Меня похитили инопланетяне, но я вернулся вовремя!",
+        "Компьютер завис, когда я был на финальной стадии проекта.",
+        "Я забыл пароль от жизни и пришлось перезагружаться."
+    ];
+
+    // Выбираем случайную отмазку
+    const randomIndex = Math.floor(Math.random() * excuses.length);
+    const excuse = excuses[randomIndex];
+
+    // Обновляем текст на странице
+    document.getElementById('excuse').textContent = excuse;
+}
